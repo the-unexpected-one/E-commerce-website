@@ -5,7 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Commerce Project</title>
         <link rel="stylesheet" href="style.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
         <script src="index.js" defer></script>
+
+    
     </head>
     <body>
         <div id="EcommerceContainer">
@@ -23,7 +27,7 @@
             <section id="music" class="container">
                 <h2>Books</h2>
                 <div id="music-content">
-                    <div id="album1">
+                    <!-- <div id="album1">
                         <h3>Book 1</h3>
                         <div class="image-container">
                             <img class="prod-images" src="https://images.penguinrandomhouse.com/cover/9780812979657" alt="">
@@ -62,13 +66,13 @@
             <span>$<span>19.99</span></span>
             <button class="shop-item-button" type='button'>ADD TO CART</button>
         </div>
-    </div>
+    </div> -->
 </div>
 
 </section>
 <section id="merch" class="container">
 <h2>MERCH</h2>
-<div id="merch-content">
+<!-- <div id="merch-content">
     <div id="t-shirt">
         <h3>Arundhati Roy Stickers</h3>
         <div class="image-container">
@@ -89,7 +93,7 @@
             <button class="shop-item-button" type='button'>ADD TO CART</button>
         </div>
     </div>
-</div>
+</div> -->
 
 
 </section>
@@ -135,5 +139,60 @@
         </ul>
     </div>
 </footer>
+<script>
+    window.addEventListener("DOMContentLoaded",()=>   
+     {
+        axios.get("http://localhost:3000/products").then((res)=>{//add localhost vali link
+            // console.log(response.data)
+            // for(var i=0;i<response.data.length;i++){
+            //     showNewUserOnScreen(response.data[i])
+            // }
+            const song = document.getElementById("music-content")
+        console.log(res.data[0])
+        for(let i=0;i<res.data.length;i++){
+            let info= res.data[i]
+        const ID = info.id
+        const name = info.title
+        const price = info.price
+        const img_url = info.imageUrl
+        
+        const listen = document.createElement('div')
+
+        listen.setAttribute("id",ID)
+        console.log(listen)
+        console.log(img_url)
+        
+        listen.innerHTML  = 
+        
+        `<h3> ${name}</h3>
+        <div class="image-container">
+            <img class="prod-images" src="${img_url}"
+            alt="">
+        </div>
+        <div class="prod-details">
+            
+             <span>$<span>${price}  </span></span>
+           
+            <button class="shop-item-button" type="button">ADD TO CART</button>
+        
+            
+        </div>
+
+    </div>`
+  song.appendChild(listen)
+        }
+
+        
+
+        
+
+    
+
+        }).catch((err)=>{
+            document.body.innerHTML="<h4>Something went wrong<h4>"
+            console.log(err)})
+     })
+   
+</script>
 </body>
 </html>
