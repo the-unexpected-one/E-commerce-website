@@ -429,3 +429,38 @@ header .play-btn{
 .notification h4 span{
     color:rgb(235, 33, 33);
 }
+#pagination{
+    margin-top: 2rem;
+  text-align: center;
+}
+#pagination button{
+    text-decoration: none;
+    color: #00695c;
+    padding: 0.5rem;
+    border: 1px solid #00695c;
+    margin: 0 1rem;
+}
+#pagination button:hover,
+#pagination button:active,
+#pagination button.active{
+  background-color: #00695c;
+  color: white;
+}
+
+#cartPagination{
+    margin-top: 2rem;
+  text-align: center;
+}
+#cartPagination button{
+    text-decoration: none;
+    color: #00695c;
+    padding: 0.5rem;
+    border: 1px solid #00695c;
+    margin: 0 1rem;
+}
+#cartPagination button:hover,
+#cartPagination button:active,
+#cartPagination button.active{
+  background-color: #00695c;
+  color: white;
+}
