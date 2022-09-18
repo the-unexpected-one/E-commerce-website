@@ -148,6 +148,7 @@ function cartPagination({
 
     })
     .catch(err => console.log(err))
+
 }
 
        
@@ -343,4 +344,14 @@ function showPagination({
  </div>`
  song.appendChild(listen)
     }
+}
+function postOrderItems(){
+    axios.post("http://localhost:3000/orders")
+    .then(res=>{
+        alert(`${res.data.orderId}: ${res.data.message}`)
+        notifyUsers(res.data.message)
+        console.log(res.data.orderId)
+    }).catch(err=>{
+        console.log(err)
+    })
 }
